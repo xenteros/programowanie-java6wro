@@ -18,19 +18,31 @@ public class DaysDifferenceService {
         Calendar calendar = Calendar.getInstance();
         calendar.setTime(now);
         int totalDays = 0;
+        int year = calendar.get(Calendar.YEAR);
+        int month = calendar.get(Calendar.MONTH);
 
-        for (int i = 1; i < calendar.get(Calendar.YEAR); i++) {
+        totalDays += sumDaysInYearsBefore(year);
+        totalDays += sumDaysInMonthsBefore(month, year);
+        totalDays += calendar.get(Calendar.DAY_OF_MONTH) - 1;
+
+        return totalDays;
+    }
+
+    private int sumDaysInYearsBefore(int year) {
+        int totalDays = 0;
+        for (int i = 1; i < year; i++) {
             totalDays += leapYearService.isLeapYear(i) ? 366 : 365;
         }
-        for (int i = 0; i < calendar.get(Calendar.MONTH); i++) {
+        return totalDays;
+    }
+    private int sumDaysInMonthsBefore(int month, int year) {
+        int totalDays = 0;
+        for (int i = 0; i < month; i++) {
             totalDays += daysInMonts[i];
-            if (i == 1) {
-                if (leapYearService.isLeapYear(calendar.get(Calendar.YEAR))) {
-                    totalDays += 1;
-                }
+            if (i == 1 && leapYearService.isLeapYear(year)) {
+                totalDays += 1;
             }
         }
-        totalDays += calendar.get(Calendar.DAY_OF_MONTH) - 1;
         return totalDays;
     }
 }
