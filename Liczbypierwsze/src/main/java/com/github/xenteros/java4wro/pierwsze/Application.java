@@ -6,6 +6,6 @@ public class Application {
 
     public static void main(String[] args) {
         LeapYearService leapYearService = new LeapYearService();
-        System.out.println(leapYearService.isLeapYear(1900));
+        System.out.println(leapYearService.isLeapYear(2004));
     }
 }
