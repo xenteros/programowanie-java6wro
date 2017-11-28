@@ -1,11 +1,13 @@
 package com.github.xenteros.java4wro.pierwsze.service;
 
+import com.github.xenteros.java4wro.pierwsze.enums.Month;
+
 import java.util.Calendar;
 import java.util.Date;
 
 public class DaysDifferenceService {
 
-    private int[] daysInMonts = {31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31};
+    private Month[] months = Month.values();
     private LeapYearService leapYearService;
 
     public DaysDifferenceService() {
@@ -38,8 +40,8 @@ public class DaysDifferenceService {
     private int sumDaysInMonthsBefore(int month, int year) {
         int totalDays = 0;
         for (int i = 0; i < month; i++) {
-            totalDays += daysInMonts[i];
-            if (i == 1 && leapYearService.isLeapYear(year)) {
+            totalDays += months[i].getDays();
+            if (months[i] == Month.FEBRUARY && leapYearService.isLeapYear(year)) {
                 totalDays += 1;
             }
         }
