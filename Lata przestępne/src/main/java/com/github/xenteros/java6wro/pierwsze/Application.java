@@ -1,7 +1,7 @@
-package com.github.xenteros.java4wro.pierwsze;
+package com.github.xenteros.java6wro.pierwsze;
 
-import com.github.xenteros.java4wro.pierwsze.service.DaysDifferenceService;
-import com.github.xenteros.java4wro.pierwsze.service.LeapYearService;
+import com.github.xenteros.java6wro.pierwsze.service.DaysDifferenceService;
+import com.github.xenteros.java6wro.pierwsze.service.LeapYearService;
 
 public class Application {
 

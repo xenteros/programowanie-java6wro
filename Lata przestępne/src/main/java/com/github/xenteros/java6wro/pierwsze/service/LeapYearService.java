@@ -1,4 +1,4 @@
-package com.github.xenteros.java4wro.pierwsze.service;
+package com.github.xenteros.java6wro.pierwsze.service;
 
 public class LeapYearService {
 

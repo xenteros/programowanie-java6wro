@@ -1,4 +1,4 @@
-package com.github.xenteros.java4wro.pierwsze.enums;
+package com.github.xenteros.java6wro.pierwsze.enums;
 
 public enum Month {
 

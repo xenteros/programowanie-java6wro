@@ -1,6 +1,6 @@
-package com.github.xenteros.java4wro.pierwsze.service;
+package com.github.xenteros.java6wro.pierwsze.service;
 
-import com.github.xenteros.java4wro.pierwsze.enums.Month;
+import com.github.xenteros.java6wro.pierwsze.enums.Month;
 
 import java.util.Calendar;
 import java.util.Date;
