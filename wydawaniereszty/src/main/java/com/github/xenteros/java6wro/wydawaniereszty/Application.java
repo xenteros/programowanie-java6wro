@@ -1,8 +1,9 @@
 package com.github.xenteros.java6wro.wydawaniereszty;
 
-import java.util.EnumMap;
-
 public class Application {
 
-    EnumMap<NominalValue, Integer> result = new EnumMap<NominalValue, Integer>(NominalValue.class);
+    public static void main(String[] args) {
+        System.out.println(ExchangeService.getExchange(99));
+    }
+
 }
