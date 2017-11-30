@@ -7,10 +7,12 @@ public class Application {
 //        System.out.println(fib(40));
 //        System.out.println((System.currentTimeMillis() - start));
 
-        FibonacciService fibonacciService = new FibonacciService(40);
-        long start = System.currentTimeMillis();
-        System.out.println(fibonacciService.fib(39));
-        System.out.println((System.currentTimeMillis() - start));
+//        FibonacciService fibonacciService = new FibonacciService(40);
+//        long start = System.currentTimeMillis();
+//        System.out.println(fibonacciService.fib(39));
+//        System.out.println((System.currentTimeMillis() - start));
+        FibonacciService fibonacciService = new FibonacciService(3);
+        System.out.println(fibonacciService.fibonacciMatrix(1));
 
     }
 
