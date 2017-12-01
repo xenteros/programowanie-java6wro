@@ -3,7 +3,7 @@ package com.github.xenteros.java6wro.customlist;
 public class Application {
 
     public static void main(String[] args) {
-        MyCustomStringList list = new MyCustomStringList("a");
+        MyCustomList list = new MyCustomList("a");
         list.add("b");
         list.add("c");
         list.add("d");

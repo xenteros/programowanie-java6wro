@@ -1,15 +1,15 @@
 package com.github.xenteros.java6wro.customlist;
 
-public class MyCustomStringList {
+public class MyCustomList<T> {
 
-    private String value;
-    private MyCustomStringList nextElement;
+    private T value;
+    private MyCustomList nextElement;
 
-    public void add(String newString) {
+    public void add(T newEntry) {
         if (nextElement == null) {
-            nextElement = new MyCustomStringList(newString);
+            nextElement = new MyCustomList(newEntry);
         } else {
-            nextElement.add(newString);
+            nextElement.add(newEntry);
         }
     }
 
@@ -20,8 +20,8 @@ public class MyCustomStringList {
         }
     }
 
-    public MyCustomStringList get(int i) {
-        MyCustomStringList temp = nextElement;
+    public MyCustomList get(int i) {
+        MyCustomList temp = nextElement;
         if (i==0){
             return this;
         }
@@ -32,29 +32,29 @@ public class MyCustomStringList {
     }
 
     public void delete(int i) {
-        MyCustomStringList iMinusPierwszy = get(i-1);
-        MyCustomStringList iPlusPierwszy = get(i+1);
+        MyCustomList iMinusPierwszy = get(i-1);
+        MyCustomList iPlusPierwszy = get(i+1);
         iMinusPierwszy.setNextElement(iPlusPierwszy);
     }
 
 
-    public MyCustomStringList(String value) {
+    public MyCustomList(T value) {
         this.value = value;
     }
 
-    public String getValue() {
+    public T getValue() {
         return value;
     }
 
-    public void setValue(String value) {
+    public void setValue(T value) {
         this.value = value;
     }
 
-    public MyCustomStringList getNextElement() {
+    public MyCustomList getNextElement() {
         return nextElement;
     }
 
-    public void setNextElement(MyCustomStringList nextElement) {
+    public void setNextElement(MyCustomList nextElement) {
         this.nextElement = nextElement;
     }
 }
