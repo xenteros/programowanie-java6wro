@@ -5,7 +5,9 @@ import java.math.BigDecimal;
 public class Application {
 
     public static void main(String[] args) {
-        System.out.println(solveEquations(-1, 100, 0.25));
+
+
+
     }
 
     public static double solveEquations(double left, double right, double margin) {
