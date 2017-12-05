@@ -1,13 +1,43 @@
 package com.github.xenteros.java6wro.primaries;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Optional;
+import java.security.SecureRandom;
+import java.util.*;
+import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 
 public class Application {
 
     public static void main(String[] args) {
+
+        //Przykład generowania UUID
+        String uuid = UUID.randomUUID().toString();
+
+
+        //Przykładowy sposób losowania elementu z seta.
+        //      OrElse(null) do przemyślenia - pewnie nienajlepsze, ale
+        //      nie tego dotyczy przykład.
+        Set<String> set = new HashSet<>();
+        String randomSetElement = set.stream()
+                .skip((int)(set.size()*Math.random()))
+                .findFirst()
+                .orElse(null);
+
+        //Schemat generowania 30 użytkowników
+        for (int i  = 0; i < 30; i++) {
+            String firstName = ""; //wylosuj imię ze zbioru imion
+            String lastName = ""; //wylosuj nazwisko ze zbioru nazwisk
+
+            set.add(new User(firstName, lastName)); //potrzebny odpowiedni konstruktor
+        }
+
+        //Przykład generowania intów z przedziału. Można wykorzystać do
+        //losowania wieku.
+        Random random = new SecureRandom();
+        int between20inclAnd30excl = random.nextInt(10) + 20;
+
+        Set<User> users = new HashSet<>();
+        IntSummaryStatistics ageStatistics = users.stream()
+                .collect(Collectors.summarizingInt(User::getAge));
 
         List<String> stringList = new ArrayList<>();
         stringList.add("A");
