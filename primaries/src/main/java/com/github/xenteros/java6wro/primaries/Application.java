@@ -2,8 +2,10 @@ package com.github.xenteros.java6wro.primaries;
 
 import java.security.SecureRandom;
 import java.util.*;
+import java.util.function.Function;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
+import java.util.stream.Stream;
 
 public class Application {
 
@@ -12,9 +14,28 @@ public class Application {
         //Przykład generowania UUID
         String uuid = UUID.randomUUID().toString();
 
+        List<String> stringList = new ArrayList<>();
+        stringList.sort(new Comparator<String>() {
+            @Override
+            public int compare(String o1, String o2) {
+                return o1.length() - o2.length();
+            }
+        });
+        stringList.sort((foo, bar) -> {
+            if (foo.length() == bar.length()) {
+                return foo.compareTo(bar);
+            } return foo.length() - bar.length();
+        });
 
+        Map<String, List<String>> result = stringList.stream()
+                .collect(Collectors.groupingBy(String::toUpperCase,
+                        Collectors.mapping(Function.identity(), Collectors.toList())));
+
+        stringList.sort(Comparator.comparingInt(String::length));
+        stringList.sort(Comparator.naturalOrder());
         //Przykładowy sposób losowania elementu z seta.
-        //      OrElse(null) do przemyślenia - pewnie nienajlepsze, ale
+        //      OrElse(null)
+        // do przemyślenia - pewnie nienajlepsze, ale
         //      nie tego dotyczy przykład.
         Set<String> set = new HashSet<>();
         String randomSetElement = set.stream()
@@ -27,7 +48,7 @@ public class Application {
             String firstName = ""; //wylosuj imię ze zbioru imion
             String lastName = ""; //wylosuj nazwisko ze zbioru nazwisk
 
-            set.add(new User(firstName, lastName)); //potrzebny odpowiedni konstruktor
+//            set.add(new User(firstName, lastName)); //potrzebny odpowiedni konstruktor
         }
 
         //Przykład generowania intów z przedziału. Można wykorzystać do
@@ -39,18 +60,24 @@ public class Application {
         IntSummaryStatistics ageStatistics = users.stream()
                 .collect(Collectors.summarizingInt(User::getAge));
 
-        List<String> stringList = new ArrayList<>();
-        stringList.add("A");
-        stringList.add("B");
-        stringList.add("C");
-        stringList.add("D");
-        stringList.add("E");
-        stringList.add("F");
-        stringList.add("G");
-        stringList.add("GG");
-        stringList.add("GG");
-        stringList.add("ABC");
+        List<String> stringList2 = new ArrayList<>();
+        stringList2.add("A");
+        stringList2.add("B");
+        stringList2.add("C");
+        stringList2.add("D");
+        stringList2.add("E");
+        stringList2.add("F");
+        stringList2.add("G");
+        stringList2.add("GG");
+        stringList2.add("GG");
+        stringList2.add("ABC");
 
+        System.out.println("PEEK");
+        Stream<String> stringStream = stringList2.stream()
+                .peek(System.out::println);
+        System.out.println("END OF PEEK");
+
+        stringStream.collect(Collectors.toList());
 //        List<String> wordsOfLenth1 = new ArrayList<>();
 //        for (String s : stringList) {
 //            if (s.length() == 1) {

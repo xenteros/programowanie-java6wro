@@ -1,7 +1,10 @@
 package com.github.xenteros.java6wro.wydawaniereszty;
 
+import java.util.Arrays;
 import java.util.EnumMap;
+import java.util.List;
 import java.util.Map;
+import java.util.stream.Collectors;
 
 public class ExchangeService {
 
@@ -11,6 +14,9 @@ public class ExchangeService {
         }
         NominalValue[] nominalValues = NominalValue.values();
         int i = nominalValues.length - 1;
+        List<String> nominalNames = Arrays.stream(nominalValues)
+                .map(NominalValue::name)
+                .collect(Collectors.toList());
 
         Map<NominalValue, Integer> result = new EnumMap<NominalValue, Integer>(NominalValue.class);
 
