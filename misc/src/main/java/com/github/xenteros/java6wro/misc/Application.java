@@ -9,10 +9,25 @@ public class Application {
 
     public static void main(String[] args) {
 
-        Dog dog = null;
-        dog = new Dog("Burek");
-        burkify(dog);
-        System.out.println(dog.getName());
+        String a = "ABC";
+        String b = "ABC";
+        String c = new String("ABC");
+        String d = new String("ABC").intern();
+        String e = "A"+ "B" + "C";
+
+        System.out.println(a == b);
+        System.out.println(a == c);
+        System.out.println(b == e);
+
+
+        Integer one = 130;
+        Integer onebis = 130;
+        System.out.println(one == onebis);
+
+//        Dog dog = null;
+//        dog = new Dog("Burek");
+//        burkify(dog);
+//        System.out.println(dog.getName());
     }
 
     public static void burkify(Dog dog) {
