@@ -8,10 +8,19 @@ import java.util.*;
 public class Application {
 
     public static void main(String[] args) {
-        read();
-//        read().entrySet().stream().sorted(comparingByValue(comparingInt(WordCountHelper::getCount).reversed()))
-//                .limit(30)
-//                .forEach(System.out::println);
+
+        Dog dog = null;
+        dog = new Dog("Burek");
+        burkify(dog);
+        System.out.println(dog.getName());
+    }
+
+    public static void burkify(Dog dog) {
+        dog.setName("Burk");
+    }
+
+    public static void fifify(Dog d) {
+        d = new Dog("FIFI");
     }
 
     public static Map<String, WordCountHelper> read() {
@@ -32,7 +41,7 @@ public class Application {
                         example.get(wordCountHelper).add(words);
                     } else {
                         WordCountHelper wordCountHelper = new WordCountHelper(word.toLowerCase());
-                        mapCountOfWords.put(word.toLowerCase(),wordCountHelper);
+                        mapCountOfWords.put(word.toLowerCase(), wordCountHelper);
                         List<String[]> list = new ArrayList<>();
                         list.add(words);
                         example.put(wordCountHelper, list);
@@ -51,7 +60,7 @@ public class Application {
                                 wordCountHelper.increment();
                             } else {
                                 WordCountHelper wordCountHelper = new WordCountHelper(word.toLowerCase());
-                                mapCountOfWords.put(word.toLowerCase(),wordCountHelper);
+                                mapCountOfWords.put(word.toLowerCase(), wordCountHelper);
                                 List<String[]> list = new ArrayList<>();
                                 list.add(words);
                                 example.put(wordCountHelper, list);
