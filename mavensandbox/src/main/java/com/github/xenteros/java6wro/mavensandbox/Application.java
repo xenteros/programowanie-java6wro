@@ -3,6 +3,10 @@ package com.github.xenteros.java6wro.mavensandbox;
 import com.opencsv.CSVReader;
 import com.opencsv.bean.ColumnPositionMappingStrategy;
 import com.opencsv.bean.CsvToBean;
+import org.apache.pdfbox.pdmodel.PDDocument;
+import org.apache.pdfbox.pdmodel.PDPage;
+import org.apache.pdfbox.pdmodel.PDPageContentStream;
+import org.apache.pdfbox.pdmodel.font.PDType1Font;
 import org.apache.poi.hssf.usermodel.HSSFRow;
 import org.apache.poi.hssf.usermodel.HSSFSheet;
 import org.apache.poi.hssf.usermodel.HSSFWorkbook;
@@ -41,6 +45,16 @@ public class Application {
         workbook.write(fs);
         workbook.close();
 
+        PDDocument pdDocument = new PDDocument();
+        PDPage page = new PDPage();
+        pdDocument.addPage(page);
+        PDPageContentStream contentStream = new PDPageContentStream(pdDocument, page);
+        contentStream.beginText();
+        contentStream.setFont(PDType1Font.COURIER_BOLD, 12);
+        contentStream.showText("Hello PDF");
+        contentStream.endText();
+        contentStream.close();
+        pdDocument.save("example.pdf");
 
 //        for (String[] strings : csvReader.readAll()) {
 //            for (String string : strings) {
