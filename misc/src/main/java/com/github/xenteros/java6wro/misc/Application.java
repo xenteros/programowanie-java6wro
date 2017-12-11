@@ -9,25 +9,14 @@ public class Application {
 
     public static void main(String[] args) {
 
-        String a = "ABC";
-        String b = "ABC";
-        String c = new String("ABC");
-        String d = new String("ABC").intern();
-        String e = "A"+ "B" + "C";
+        Gender man = Gender.MAN;
+        System.out.println(man.name());
+        Gender man2 = Gender.valueOf("MAN");
+        Gender man3 = Gender.fromString("man");
+        System.out.println(man == man2);
+        System.out.println(man == man3);
+//        Gender g = new Gender("MAN"); //forbidden
 
-        System.out.println(a == b);
-        System.out.println(a == c);
-        System.out.println(b == e);
-
-
-        Integer one = 130;
-        Integer onebis = 130;
-        System.out.println(one == onebis);
-
-//        Dog dog = null;
-//        dog = new Dog("Burek");
-//        burkify(dog);
-//        System.out.println(dog.getName());
     }
 
     public static void burkify(Dog dog) {
